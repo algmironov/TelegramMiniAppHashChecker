@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramMiniAppHashChecker.
 		{966B7A56-3007-49E6-A388-35C7DF8AEC7D} = {966B7A56-3007-49E6-A388-35C7DF8AEC7D}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramMiniAppHashChecker.TelegramWebAppDataValidator", "TelegramWebAppDataValidator\TelegramMiniAppHashChecker.TelegramWebAppDataValidator.csproj", "{966B7A56-3007-49E6-A388-35C7DF8AEC7D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramWebAppDataValidator", "TelegramWebAppDataValidator\TelegramWebAppDataValidator.csproj", "{966B7A56-3007-49E6-A388-35C7DF8AEC7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
