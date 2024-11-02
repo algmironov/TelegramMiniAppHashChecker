@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramMiniAppHashChecker.ConsoleApp", "TelegramMiniAppHashChecker.Console\TelegramMiniAppHashChecker.ConsoleApp.csproj", "{C30217FA-B6C8-4027-87AB-A2EB90E67E51}"
+	ProjectSection(ProjectDependencies) = postProject
+		{966B7A56-3007-49E6-A388-35C7DF8AEC7D} = {966B7A56-3007-49E6-A388-35C7DF8AEC7D}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramMiniAppHashChecker.TelegramWebAppDataValidator", "TelegramWebAppDataValidator\TelegramMiniAppHashChecker.TelegramWebAppDataValidator.csproj", "{966B7A56-3007-49E6-A388-35C7DF8AEC7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C30217FA-B6C8-4027-87AB-A2EB90E67E51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C30217FA-B6C8-4027-87AB-A2EB90E67E51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C30217FA-B6C8-4027-87AB-A2EB90E67E51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C30217FA-B6C8-4027-87AB-A2EB90E67E51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{966B7A56-3007-49E6-A388-35C7DF8AEC7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{966B7A56-3007-49E6-A388-35C7DF8AEC7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{966B7A56-3007-49E6-A388-35C7DF8AEC7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{966B7A56-3007-49E6-A388-35C7DF8AEC7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3E70903B-BF71-4C6A-A183-45C1AA98C51F}
+	EndGlobalSection
+EndGlobal
