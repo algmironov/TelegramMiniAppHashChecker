@@ -1,65 +1,85 @@
-# TelegramMiniAppHashChecker
-## .NET Class library for validating data from Telegram Mini App (WebAppData) 
+# TelegramMiniAppHashChecker 🔐
 
-The only aim of this lib is to verify data came from Telegram when launching Mini App. 
+**A .NET library for validating Telegram Mini App initialization data (`initData`).**
 
-## Installing
+[![NuGet](https://img.shields.io/nuget/v/TelegramWebAppDataValidator?logo=nuget&label=NuGet)](https://www.nuget.org/packages/TelegramWebAppDataValidator)
+![License](https://img.shields.io/badge/License-MIT-blue)
 
-```sh
+This repository contains the library published as **`TelegramWebAppDataValidator`** on NuGet. It exposes a small API for checking the hash associated with initialization data supplied to a Telegram Mini App.
+
+> **Security notice:** This is an existing implementation, not a security-audited component. Its compatibility with the latest Telegram specification, freshness/replay protection, and constant-time hash comparison have **not** been independently verified as part of this documentation update. Review the implementation and Telegram's current requirements before relying on it for authentication or authorization.
+
+## Installation
+
+```bash
+dotnet add package TelegramWebAppDataValidator
+```
+
+Or use NuGet Package Manager:
+
+```powershell
 Install-Package TelegramWebAppDataValidator
 ```
 
-Or add reference into your `.csproj` file:
+See the [NuGet package page](https://www.nuget.org/packages/TelegramWebAppDataValidator) for available versions.
 
-```xml
-<PackageReference Include="TelegramWebAppDataValidator" Version="1.0.0" />
-```
-
-## Usage
-
-To validata Telegram WebAppData call `Validate` method from `Validator` class.
+## Basic usage
 
 ```csharp
 using TelegramWebAppDataValidator;
 
 string initData = "your_init_data_here";
-string token = "your_bot_token_here";
-bool isValid = Validator.Validate(initData, token);
+string botToken = "your_bot_token_here";
+
+bool isValid = Validator.Validate(initData, botToken);
 
 if (isValid)
 {
-    Console.WriteLine("Data is valid.");
+    Console.WriteLine("Hash validation succeeded.");
 }
 else
 {
-    Console.WriteLine("Data is not valid.");
+    Console.WriteLine("Hash validation failed.");
 }
 ```
 
-## Methods
+The example demonstrates the library's existing API; it is **not** a complete production authentication flow. Keep your bot token on a trusted backend and never expose it in frontend code or commit it to source control.
 
-### Validate
+## API
 
 ```csharp
-public static bool Validate(string initData, string token, string cStr = "WebAppData")
+public static bool Validate(
+    string initData,
+    string token,
+    string cStr = "WebAppData")
 ```
 
-- **initData**: Data string, received from Telegram.
-- **token**: Your Bot Token.
-- **cStr**: Constant string used to hash data. "WebAppData" is a default string, do not change it until (if) Telegram changes it's api.
+| Parameter | Description |
+|---|---|
+| `initData` | Initialization data provided by Telegram Mini Apps |
+| `token` | Your Telegram bot token; handle it as a secret |
+| `cStr` | Internal validation constant; normally leave the default `WebAppData` unchanged |
 
-Returns `true`, if validation was successful, and `false` if validation fails.
+Returns a boolean indicating whether the implemented hash check succeeded.
+
+**Important:** A successful hash check alone does not establish that data is recent or safe from replay. Applications should also enforce an appropriate age limit using `auth_date` and follow the latest [Telegram Mini Apps documentation](https://core.telegram.org/bots/webapps#validating-data-received-via-the-mini-app).
+
+## Maintenance notes
+
+Before using this library in a security-sensitive production system, the implementation should be reviewed for:
+
+- Correct parsing and canonicalization of Telegram `initData`.
+- Compliance with Telegram's current HMAC validation algorithm.
+- Constant-time comparison of computed and supplied hashes.
+- Validation of `auth_date` and replay/freshness requirements.
+- Malformed input handling and tests against official test vectors.
+
+These are **review items**, not claims that the current implementation already satisfies them.
 
 ## License
 
-This library is distributing under the MIT License. 
+MIT.
 
-## Contacts
+## Feedback
 
-Reach me via [GitHub Issues](https://github.com/algmironov/TelegramMiniAppHashChecker/issues).
-
-Or via [Telegram](https://t.me/Alexey_G_M)
-
-## Final words
-
-Thanks for using TelegramWebAppDataValidator!
+Report issues or propose improvements through [GitHub Issues](https://github.com/algmironov/TelegramMiniAppHashChecker/issues).
